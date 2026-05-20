@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Para Alejandra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: radial-gradient(ellipse at center, #2d0020 0%, #0a0008 100%);
+        color: #fff;
+        font-family: 'Cormorant Garamond', serif;
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .petalo {
+        position: fixed;
+        top: -50px;
+        pointer-events: none;
+        animation: caer linear infinite;
+    }
+
+    @keyframes caer {
+        0%   { top: -50px; transform: rotate(0deg) translateX(0px); opacity: 1; }
+        50%  { transform: rotate(180deg) translateX(50px); }
+        100% { top: 110vh; transform: rotate(360deg) translateX(-30px); opacity: 0; }
+    }
+
+    .contenido {
+        position: relative;
+        z-index: 10;
+        padding: 2rem;
+        animation: aparecer 1.5s ease;
+    }
+
+    @keyframes aparecer {
+        0%   { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4.5rem;
+        color: #ffb6c1;
+        text-shadow: 0 0 30px rgba(255,105,180,0.6);
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitulo {
+        font-size: 1.1rem;
+        color: rgba(255,182,193,0.6);
+        font-style: italic;
+        margin-bottom: 3rem;
+        letter-spacing: 3px;
+    }
+
+    .caja {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,182,193,0.2);
+        border-radius: 20px;
+        padding: 2.5rem 3rem;
+    }
+
+    .label {
+        font-size: 0.9rem;
+        color: rgba(255,182,193,0.5);
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    input {
+        background: rgba(255,255,255,0.05);
+        border: none;
+        border-bottom: 1px solid rgba(255,182,193,0.4);
+        color: #fff;
+        padding: 0.8rem 1rem;
+        font-size: 1.3rem;
+        text-align: center;
+        width: 200px;
+        outline: none;
+        font-family: 'Cormorant Garamond', serif;
+        letter-spacing: 6px;
+    }
+
+    input::placeholder {
+        color: rgba(255,182,193,0.2);
+        letter-spacing: 8px;
+    }
+
+    button {
+        display: block;
+        margin: 2rem auto 0;
+        background: transparent;
+        color: #ffb6c1;
+        border: 1px solid rgba(255,182,193,0.4);
+        padding: 0.8rem 3rem;
+        font-size: 1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        letter-spacing: 3px;
+        transition: all 0.4s;
+    }
+
+    button:hover {
+        background: rgba(255,105,180,0.2);
+        border-color: #ffb6c1;
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+
+<div class="contenido">
+    <h1>Bienvenida Alejandra Garcia</h1>
+    <div class="subtitulo">una sorpresa te espera</div>
+    <div class="caja">
+        <div class="label">El dia que comenzo todo</div>
+        <form action="/entrar" method="POST">
+            <input type="text" name="fecha" placeholder="  /  /    "><br>
+            <button type="submit">Abrir ❤️</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const emojis = ['🌸','🌹','🥀','💮','🌺'];
+    for(let i = 0; i < 25; i++) {
+        let p = document.createElement('div');
+        p.classList.add('petalo');
+        p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+        p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+        p.style.animationDelay = (Math.random() * 6) + 's';
+        document.body.appendChild(p);
+    }
+</script>
+</body>
+</html>

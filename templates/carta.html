@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Para Alejandra</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background: radial-gradient(ellipse at center, #2d0020 0%, #0a0008 100%);
+        color: #fff;
+        font-family: 'Cormorant Garamond', serif;
+        text-align: center;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+    }
+
+    .petalo {
+        position: fixed;
+        top: -50px;
+        pointer-events: none;
+        animation: caer linear infinite;
+    }
+
+    @keyframes caer {
+        0%   { top: -50px; transform: rotate(0deg) translateX(0px); opacity: 1; }
+        50%  { transform: rotate(180deg) translateX(50px); }
+        100% { top: 110vh; transform: rotate(360deg) translateX(-30px); opacity: 0; }
+    }
+
+    .contenido {
+        position: relative;
+        z-index: 10;
+        padding: 2rem;
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .corazon_btn {
+        font-size: 7rem;
+        cursor: pointer;
+        display: inline-block;
+        animation: latir 0.9s ease-in-out infinite;
+        filter: drop-shadow(0 0 25px rgba(255,105,180,0.9));
+        user-select: none;
+        transition: all 0.3s;
+    }
+
+    .corazon_btn:hover {
+        transform: scale(1.2);
+    }
+
+    @keyframes latir {
+        0%   { transform: scale(1); }
+        50%  { transform: scale(1.18); }
+        100% { transform: scale(1); }
+    }
+
+    .instruccion {
+        font-size: 1rem;
+        color: rgba(255,182,193,0.5);
+        font-style: italic;
+        letter-spacing: 3px;
+        margin-top: 1rem;
+        animation: parpadear 2s ease-in-out infinite;
+    }
+
+    @keyframes parpadear {
+        0%   { opacity: 0.3; }
+        50%  { opacity: 1; }
+        100% { opacity: 0.3; }
+    }
+
+    .carta {
+        display: none;
+        animation: aparecer 1.5s ease;
+    }
+
+    @keyframes aparecer {
+        0%   { opacity: 0; transform: translateY(30px) scale(0.95); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .carta_caja {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,182,193,0.2);
+        border-radius: 20px;
+        padding: 3rem;
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 3.5rem;
+        color: #ffb6c1;
+        text-shadow: 0 0 30px rgba(255,105,180,0.6);
+        margin-bottom: 0.5rem;
+    }
+
+    h2 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2rem;
+        color: rgba(255,182,193,0.6);
+        margin-bottom: 1.5rem;
+    }
+
+    .marco_foto {
+    width: 320px;
+    height: 220px;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+    .marco_foto img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid rgba(255,182,193,0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .corazon_marco {
+        position: absolute;
+        font-size: 1.5rem;
+        animation: orbitar linear infinite;
+    }
+
+    @keyframes orbitar {
+        0%   { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+    }
+
+    .mensaje {
+        font-size: 1.15rem;
+        color: #ffe4e1;
+        line-height: 2.5rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+    }
+
+    .contador {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,182,193,0.2);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .contador_titulo {
+        font-size: 0.9rem;
+        color: rgba(255,182,193,0.5);
+        letter-spacing: 3px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .contador_numeros {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .bloque {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .numero {
+        font-size: 2rem;
+        color: #ffb6c1;
+        font-weight: 400;
+        min-width: 50px;
+    }
+
+    .etiqueta {
+        font-size: 0.7rem;
+        color: rgba(255,182,193,0.4);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 0.2rem;
+    }
+
+    .separador {
+        font-size: 2rem;
+        color: rgba(255,182,193,0.3);
+        align-self: flex-start;
+        margin-top: 0.2rem;
+    }
+
+    .corazones {
+        margin-top: 1.5rem;
+    }
+
+    .corazon {
+        font-size: 2.5rem;
+        display: inline-block;
+        animation: latir 0.8s ease-in-out infinite;
+        margin: 0.3rem;
+        filter: drop-shadow(0 0 10px rgba(255,105,180,0.6));
+    }
+
+    .corazon:nth-child(2) { animation-delay: 0.15s; }
+    .corazon:nth-child(3) { animation-delay: 0.3s; }
+    .corazon:nth-child(4) { animation-delay: 0.45s; }
+    .corazon:nth-child(5) { animation-delay: 0.6s; }
+
+    .explosion {
+        position: fixed;
+        pointer-events: none;
+        font-size: 2rem;
+        animation: explotar 1.5s ease forwards;
+        z-index: 999;
+    }
+
+    @keyframes explotar {
+        0%   { transform: translate(0,0) scale(0); opacity: 1; }
+        100% { transform: translate(var(--dx), var(--dy)) scale(1.5); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<audio id="musica" loop>
+    <source src="/static/2Pac - Do For Love ft. Eric Williams.mp3" type="audio/mpeg">
+</audio>
+
+<div class="contenido">
+
+    <div id="pantalla_corazon">
+        <div class="corazon_btn" onclick="abrirCarta(event)">❤️</div>
+        <div class="instruccion">toca el corazon</div>
+    </div>
+
+    <div class="carta" id="carta">
+        <div class="carta_caja">
+            <h1>15 de Marzo de 2024</h1>
+            <h2>Para ti, Alejandra</h2>
+
+            <div class="marco_foto">
+                <img src="/static/foto.jpg">
+                <span class="corazon_marco" style="animation-duration: 4s; animation-delay: 0s;">❤️</span>
+                <span class="corazon_marco" style="animation-duration: 4s; animation-delay: 1s;">❤️</span>
+                <span class="corazon_marco" style="animation-duration: 4s; animation-delay: 2s;">❤️</span>
+                <span class="corazon_marco" style="animation-duration: 4s; animation-delay: 3s;">❤️</span>
+            </div>
+
+            <div class="contador">
+                <div class="contador_titulo">llevamos juntos</div>
+                <div class="contador_numeros">
+                    <div class="bloque">
+                        <div class="numero" id="anios">0</div>
+                        <div class="etiqueta">años</div>
+                    </div>
+                    <div class="separador">·</div>
+                    <div class="bloque">
+                        <div class="numero" id="meses">0</div>
+                        <div class="etiqueta">meses</div>
+                    </div>
+                    <div class="separador">·</div>
+                    <div class="bloque">
+                        <div class="numero" id="dias">0</div>
+                        <div class="etiqueta">dias</div>
+                    </div>
+                    <div class="separador">·</div>
+                    <div class="bloque">
+                        <div class="numero" id="horas">0</div>
+                        <div class="etiqueta">horas</div>
+                    </div>
+                    <div class="separador">·</div>
+                    <div class="bloque">
+                        <div class="numero" id="minutos">0</div>
+                        <div class="etiqueta">min</div>
+                    </div>
+                    <div class="separador">·</div>
+                    <div class="bloque">
+                        <div class="numero" id="segundos">0</div>
+                        <div class="etiqueta">seg</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mensaje">
+                Desde el primer dia que te vi supe que eras especial.<br><br>
+                Cada momento contigo vale mas que cualquier cosa.<br><br>
+                Gracias por existir y por estar en mi vida.<br><br>
+                Eres la mujer mas preciosa que adora mi corazon con mucho amor tu pocho.<br><br>
+                Te amo con todo mi corazon.
+            </div>
+
+            <div class="corazones">
+                <span class="corazon">❤️</span>
+                <span class="corazon">❤️</span>
+                <span class="corazon">❤️</span>
+                <span class="corazon">❤️</span>
+                <span class="corazon">❤️</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const emojis = ['🌸','🌹','🥀','💮','🌺'];
+    for(let i = 0; i < 25; i++) {
+        let p = document.createElement('div');
+        p.classList.add('petalo');
+        p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+        p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+        p.style.animationDelay = (Math.random() * 6) + 's';
+        document.body.appendChild(p);
+    }
+
+    function abrirCarta(event) {
+        for(let i = 0; i < 15; i++) {
+            let e = document.createElement('div');
+            e.classList.add('explosion');
+            e.innerText = '❤️';
+            e.style.left = event.clientX + 'px';
+            e.style.top = event.clientY + 'px';
+            e.style.setProperty('--dx', (Math.random() * 300 - 150) + 'px');
+            e.style.setProperty('--dy', (Math.random() * 300 - 150) + 'px');
+            e.style.animationDelay = (Math.random() * 0.3) + 's';
+            document.body.appendChild(e);
+            setTimeout(() => e.remove(), 2000);
+        }
+
+        setTimeout(() => {
+            document.getElementById('pantalla_corazon').style.display = 'none';
+            document.getElementById('carta').style.display = 'block';
+        }, 500);
+
+        let musica = document.getElementById('musica');
+        musica.currentTime = 58;
+        musica.play();
+    }
+
+    function actualizarContador() {
+        let inicio = new Date('2024-03-15T00:00:00');
+        let ahora = new Date();
+        let diff = ahora - inicio;
+
+        let anios = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        let meses = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+        let dias = Math.floor((diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        let horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('anios').innerText = anios;
+        document.getElementById('meses').innerText = meses;
+        document.getElementById('dias').innerText = dias;
+        document.getElementById('horas').innerText = horas;
+        document.getElementById('minutos').innerText = minutos;
+        document.getElementById('segundos').innerText = segundos;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+</script>
+</body>
+</html>
